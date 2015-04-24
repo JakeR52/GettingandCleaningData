@@ -82,7 +82,8 @@ tidy data set with the average of each variable for each activity and each subje
 averages by Exercise for Each individual
 
 the final output of the tidy data set for step 5 is named alt_summary_final and written to a txt file with write.table() using row.name = FALSE.
-final data set can be seen here:https://s3.amazonaws.com/coursera-uploads/user-f552016487ea50dfd347886a/973500/asst-3/64fbcd70ea0411e4ad21530945cf8ea4.txt
+final data set can be seen here:https://github.com/JakeR52/GettingandCleaningData/blob/master/TidyDataAverages.txt
+
 
 
 
