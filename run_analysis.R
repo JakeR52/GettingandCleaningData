@@ -38,12 +38,11 @@ dftblreduced<-select(dftbl2,contains("mean()"), contains("std()"))
 dftblfinal<-data.table(dftblreduced)
 
 ## create data frame with the subjects from the 'test' folder 
-setwd("test")
-sub_test<-read.table("subject_test.txt")
+
+sub_test<-read.table("test/subject_test.txt")
 ## create data frame with the subjects from the 'train' folder 
-setwd("C:/Users/Jake/Documents/UCI HAR Dataset")
-setwd("train")
-sub_train<-read.table("subject_train.txt")
+
+sub_train<-read.table("train/subject_train.txt")
 sub_testdt<-data.table(sub_test)
 sub_traindt<-data.table(sub_train)
 ## combine the 'test' and 'train' subjects into a single DT
@@ -52,14 +51,12 @@ setnames(sub_total,"V1","Subjects")
 
 
 ## create data frame with the exercises from the 'train' folder 
-setwd("C:/Users/Jake/Documents/UCI HAR Dataset")
-setwd("train")
-sub_exe_train<-read.table("y_train.txt")
+
+sub_exe_train<-read.table("train/y_train.txt")
 sub_exe_traindt<-data.table(sub_exe_train)
 ## create data frame with the exericises from the 'test' folder 
-setwd("C:/Users/Jake/Documents/UCI HAR Dataset")
-setwd("test")
-sub_exe_test<-read.table("y_test.txt")
+
+sub_exe_test<-read.table("test/y_test.txt")
 sub_exe_testdt<-data.table(sub_exe_test)
 
 sub_exe_total<-bind_rows(sub_exe_testdt,sub_exe_traindt)
