@@ -1,24 +1,30 @@
+## need some libraries
+
 ## load data.table library
 library(data.table)
 ## load dplyr library
 library(dplyr)
 
-## get into the proper folder for the data
-setwd("C:/Users/Jake/Documents/UCI HAR Dataset")
-##enter the 'test' folder
-setwd("test")
-##"read the 'test' data into a data frame"
-dftest<-read.table("x_test.txt")
-## move bakc up to the top directory for the data set
-setwd("C:/Users/Jake/Documents/UCI HAR Dataset")
-## enter the 'train' directory
-setwd("train")
-## read the 'train dataset into a data frame
-dftrain<-read.table("x_train.txt")
+##Check to see if the data exists, if it doesn;t then download it and unzip the files intot the working directory
+datadir<-"UCI HAR DAtaset"
+if (!file.exists(datadir)){
+        download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","UCI_HAR_Dataset.zip")
+        unzip("UCI_HAR_Dataset.zip")
+}else {
+        setwd("UCI HAR Dataset")
+}
+
+
+
+##"read the 'test' data from the 'test' subdirectory into a data frame"
+dftest<-read.table("test/x_test.txt")
+
+## read the 'train dataset from the 'train' subdirectory into a data frame
+dftrain<-read.table("train/x_train.txt")
 ## combine the 2 datasets in a single data frame
 dftotal<- bind_rows(dftest,dftrain)
-##move back up to the main dataset directory
-setwd("C:/Users/Jake/Documents/UCI HAR Dataset")
+
+
 ## read the features into a data frame
 features<- read.table("features.txt")
 ## use the features data frame to rename the columns of the combined data frame of 'train' and 'test' data
@@ -76,6 +82,16 @@ finaltable<-data.table(finaltable)
 ##sort by subject and then exercise
 
 FT_sorted<-finaltable[order(finaltable$Subjects,finaltable$Exercises),]
+
+
+##Create data frame with current column names to be changed into descriptive names
+namesFT<- names(FT_sorted)
+
+write.csv(namesFT, "namesFT.csv", row.names=FALSE)
+
+## descriptive names were created and saved back into a CSV file using notepad++ and save as "namesFTfinal.csv"
+
+
 
 ## rename columns with descriptive names
 
