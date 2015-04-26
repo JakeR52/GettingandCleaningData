@@ -152,6 +152,22 @@ setnames(FT_sorted,old = oldnames3, new = newnames2)
 
 alt_summary_final<-group_by(FT_sorted,Subjects,Exercises)%>%summarise_each(funs(mean))
 
+##clear out the global environment
+
+new<-ls()
+newdf<-data.table(t(new))
+old1 = names(newdf)
+setnames(newdf,old = old1,new = new)
+newdf1<-select(newdf,-alt_summary_final)
+rm(list = names(newdf1))
+rm(newdf)
+rm(newdf1)
+remove(new)
+remove(old1)
+
+
+##All that should remain is your final tidy data set
+
 alt_summary_final
 
 
