@@ -4,6 +4,8 @@
 library(data.table)
 ## load dplyr library
 library(dplyr)
+homedir<-getwd()
+
 
 ##Check to see if the data exists, if it doesn;t then download it and unzip the files intot the working directory
 datadir<-"UCI HAR DAtaset"
@@ -86,15 +88,54 @@ namesFT<- names(FT_sorted)
 
 write.csv(namesFT, "namesFT.csv", row.names=FALSE)
 
-## descriptive names were created and saved back into a CSV file using notepad++ and save as "namesFTfinal.csv"
+## descriptive names were created by me and saved back into a CSV file using notepad++ and save as "namesFTfinal.csv"
+##that code has been commented out to increase repeatability and the full new name cahracter vector is created below
 
+newnames2<-c( "Subjects"                              ,                    "Exercises",                                                
+               "mean of X axis body accelleration time signal"           ,  "mean of Y axis body accelleration time signal"       ,     
+               "mean of Z axis body accelleration time signal"           ,  "mean of X axis Gravity accelleration time signal"   ,      
+               "mean of Y axis Gravity accelleration time signal"        ,  "mean of Z axis Gravity accelleration time signal"  ,       
+               "mean of X axis body accelleration Jerk time signal"      ,  "mean of Y axis body accelleration Jerk time signal",       
+               "mean of Z axis body accelleration Jerk time signal"      ,  "mean of X axis body Gyroscope time signal"              ,  
+               "mean of Y axis body Gyroscope time signal"               ,  "mean of Z axis body Gyroscope time signal"              ,  
+              "mean of X axis body Gyroscope Jerk time signal"           , "mean of Y axis body Gyroscope Jerk time signal"          , 
+              "mean of Z axis body Gyroscope Jerk time signal"           , "mean of Body 3D accelleration magnitude"                 , 
+              "mean of Gravity 3D accelleration magnitude"               , "mean of Body Jerk 3D accelleration magnitude"            , 
+               "mean of Body 3D Gyroscope magnitude"                     ,  "mean of Body Jerk 3D Gyroscope magnitude"                , 
+               "mean of FFT of X axis body accelleration time signal"    ,  "mean of FFT of Y axis body accelleration time signal"    , 
+               "mean of FFT of Z axis body accelleration time signal"    ,  "mean of FFT of X axis body accelleration Jerk time signal",
+               "mean of FFT of Y axis body accelleration Jerk time signal", "mean of FFT of Z axis body accelleration Jerk time signal",
+               "mean of FFT of X axis body Gyroscope time signal"         , "mean of FFT of Y axis body Gyroscope time signal"   ,      
+               "mean of FFT of Z axis body Gyroscope time signal"         , "mean of FFT of Body 3D accelleration magnitude"    ,       
+               "mean of FFT of Body Jerk 3D accelleration magnitude"      , "mean of FFT of Body 3D Gyroscope magnitude"       ,        
+               "mean of FFT of Body Jerk 3D Gyroscope magnitude"          , "STD of X axis body accelleration time signal"    ,         
+               "STD of Y axis body accelleration time signal"             , "STD of Z axis body accelleration time signal"   ,          
+               "STD of X axis Gravity accelleration time signal"          , "STD of Y axis Gravity accelleration time signal"    ,      
+               "STD of Z axis Gravity accelleration time signal"          , "STD of X axis body accelleration Jerk time signal" ,       
+              "STD of Y axis body accelleration Jerk time signal"         ,"STD of Z axis body accelleration Jerk time signal" ,       
+               "STD of X axis body Gyroscope time signal"                 , "STD of Y axis body Gyroscope time signal"     ,            
+              "STD of Z axis body Gyroscope time signal"                  ,"STD of X axis body Gyroscope Jerk time signal" ,           
+              "STD of Y axis body Gyroscope Jerk time signal"             ,"STD of Z axis body Gyroscope Jerk time signal",            
+               "STD of Body 3D accelleration magnitude"                   , "STD of Gravity 3D accelleration magnitude",                
+               "STD of Body Jerk 3D accelleration magnitude"              , "STD of Body 3D Gyroscope magnitude",                       
+             "STD of Body Jerk 3D Gyroscope magnitude"                  , "STD of FFT of X axis body accelleration time signal"     , 
+               "STD of FFT of Y axis body accelleration time signal"      , "STD of FFT of Z axis body accelleration time signal"     , 
+               "STD of FFT of X axis body accelleration Jerk time signal" , "STD of FFT of Y axis body accelleration Jerk time signal", 
+               "STD of FFT of Z axis body accelleration Jerk time signal" , "STD of FFT of X axis body Gyroscope time signal"    ,      
+               "STD of FFT of Y axis body Gyroscope time signal"          , "STD of FFT of Z axis body Gyroscope time signal"    ,      
+               "STD of FFT of Body 3D accelleration magnitude"            , "STD of FFT of Body Jerk 3D accelleration magnitude" ,      
+               "STD of FFT of Body 3D Gyroscope magnitude"                , "STD of FFT of Body Jerk 3D Gyroscope magnitude" )
 
+## if you would like to use new ones, your descriptive names can be saved in a single column CSv file and loaded into the working directory to be read into at the next step
+## which is currently commented out
 
 ## rename columns with descriptive names
 
+
 ## read in CSV with new descriptive names
-newnames2<- read.csv("namesFTfinal.csv")$x
-newnames2<-as.character(newnames2)
+##setwd<-homedir
+##newnames2<- read.csv("namesFTfinal.csv")$x
+##newnames2<-as.character(newnames2)
 
 ## create character vector of old names
 
